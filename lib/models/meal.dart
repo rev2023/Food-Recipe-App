@@ -19,16 +19,23 @@ class Meal {
   String strInstructions;
   String strMealThumb;
 
-  Meal(this.idMeal, this.strMeal, this.strCategory, this.strArea, this.strInstructions, this.strMealThumb);
+  Meal(
+      this.idMeal,
+      this.strMeal,
+      this.strCategory,
+      this.strArea,
+      this.strInstructions,
+      this.strMealThumb,
+      );
 
   factory Meal.fromJson(Map<String, dynamic> json) {
     return Meal(
       json['idMeal'] as String,
       json['strMeal'] as String,
-      json['strCategory'] as String,
-      json['strArea'] as String,
-      json['strInstructions'] as String,
-      json['strMealThumb'] as String
+      json['strCategory'] as String? ?? 'null',
+      json['strArea'] as String? ?? 'null',
+      json['strInstructions'] as String? ?? 'null', // Set 'null' if strInstructions is null
+      json['strMealThumb'] as String,
     );
   }
 }

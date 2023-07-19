@@ -26,11 +26,11 @@ class _SearchState extends State<SearchBar> {
 
     return Container(
       width: 120,
-      height: 80,
+      height: 90,
       margin: EdgeInsets.only(bottom: 20,),
       child: FloatingSearchBar(
         hint: 'Search...',
-        scrollPadding: const EdgeInsets.only(top: 16, bottom: 56),
+        scrollPadding: const EdgeInsets.only(top: 16, bottom: 50),
         transitionDuration: const Duration(milliseconds: 800),
         transitionCurve: Curves.easeInOut,
         physics: const BouncingScrollPhysics(),
@@ -45,7 +45,7 @@ class _SearchState extends State<SearchBar> {
           print(query);
           SearchMealProvider searchMealProvider = Provider.of<SearchMealProvider>(context, listen: false);
           searchMealProvider.query = query;
-          searchMealProvider.fetchData();
+          searchMealProvider.fetchSearchData();
           context.router.push( DisplaySearchRoute());
         },
         transition: CircularFloatingSearchBarTransition(),

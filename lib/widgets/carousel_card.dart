@@ -1,22 +1,34 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../provider/meal_category_provider.dart';
+import '../provider/search_meal_provider.dart';
+import '../router/app_router.gr.dart';
 
 class CarouselCard extends StatelessWidget {
   final List<String> imagePaths;
   final List<String> categoryNames;
-  final VoidCallback onTap;
 
 
 
-  CarouselCard(this.imagePaths,  this.categoryNames, this.onTap, {super.key});
+  CarouselCard(this.imagePaths,  this.categoryNames, {super.key});
 
-  List<Widget> generateCards(int length) {
+
+  List<Widget> generateCards(int length, BuildContext context) {
+
     return List<Widget>.generate(length, (index) {
+      final searchMealProvider = Provider.of<SearchMealProvider>(context,);
+
       return GestureDetector(
-        onTap: onTap,
+        onTap: () {
+          print(categoryNames[index]);
+          searchMealProvider.fetchCategoryData(categoryNames[index]);
+          context.router.push(DisplaySearchRoute());
+
+        },
+
         child: Container(
           margin: const EdgeInsets.fromLTRB(25, 50, 15, 100),
           decoration: BoxDecoration(
@@ -77,7 +89,7 @@ class CarouselCard extends StatelessWidget {
         return SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
-            children: generateCards(mealProvider.mealCategories.length),
+            children: generateCards(mealProvider.mealCategories.length, context),
           ),
         );
       },

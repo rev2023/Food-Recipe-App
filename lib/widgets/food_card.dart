@@ -45,7 +45,7 @@ class _FoodCardState extends State<FoodCard> {
             ),
             height: 60,
             width: 160,
-            margin: const EdgeInsets.fromLTRB(5, 130, 20, 30),
+            margin: const EdgeInsets.fromLTRB(0, 130, 20, 30),
             child: Center(
               child: Text(
                 widget.text,

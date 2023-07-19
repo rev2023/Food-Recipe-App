@@ -80,45 +80,7 @@ class RecipeScreen extends StatelessWidget {
               ),
             ),
 
-              Consumer<SearchMealProvider>(
-                builder: (context, recipeProvider, child) {
-                  return Center(
-                    child: Column(
-                      children: [
-                        Visibility(
-                            visible: recipeProvider.searchMealList.isNotEmpty,
-                            replacement: const CircularProgressIndicator(),
-                            child: Column(
-                              children: [
 
-                                const SizedBox(
-                                  height: 65,
-                                ),
-
-                                const SizedBox(
-                                  width: 300,
-                                  child: Divider(color: Colors.tealAccent, height: 55,),
-                                ),
-
-                                const SizedBox(
-                                  height: 20,
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Text(_meal.strMeal, style: TextStyle(),),
-                                ),
-                                const SizedBox(
-                                  width: 300,
-                                  height: 30,
-                                ),
-
-                              ],
-                            )),
-                      ],
-                    ),
-                  );
-                },
-              ),
               ]),
             ],
           ),
