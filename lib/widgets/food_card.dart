@@ -41,7 +41,7 @@ class _FoodCardState extends State<FoodCard> {
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
-              color: Colors.tealAccent,
+              color: Color(0xFF36454F),
             ),
             height: 60,
             width: 160,
@@ -49,7 +49,7 @@ class _FoodCardState extends State<FoodCard> {
             child: Center(
               child: Text(
                 widget.text,
-                style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.black54),
+                style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.white70),
               ),
             ),
           ),

@@ -1,3 +1,4 @@
+import 'package:Food_Recipe_App/provider/search_meal_provider.dart';
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -6,69 +7,86 @@ import 'package:Food_Recipe_App/provider/random_meal_provider.dart';
 import 'package:Food_Recipe_App/widgets/food_card.dart';
 import 'package:provider/provider.dart';
 
+import '../models/meal.dart';
+import '../widgets/app_bar.dart';
 import 'home_screen.dart';
 
 @RoutePage()
 class RecipeScreen extends StatelessWidget {
-  final int index;
+  final Meal _meal;
 
-  RecipeScreen(this.index,);
+  RecipeScreen(this._meal,);
 
   String searchValue = '';
 
   @override
   Widget build(BuildContext context) {
-    final recipeProvider = Provider.of<Recipe>(context);
-    print(index);
-    recipeProvider.fetchData();
 
     return Scaffold(
+      appBar:CustomAppBar(),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             children: [
           Column(
           children: [
-          Container(
-          width: double.infinity,
-            height: 150,
-            decoration: const BoxDecoration(
-              color: Colors.tealAccent,
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(50),
-                bottomRight: Radius.circular(50),
-              ),
-            ),
-            child: Row(
+            SizedBox(height: 30,),
+            FoodCard(
+              imagePath: _meal.strMealThumb,
+              text: _meal.strMeal,
+              onTap: () {},
+            ),             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                const Text(
-                  'Find Recipe',
-                  style: TextStyle(
-                    fontSize: 25,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
+              children: [  Container(
+                margin: EdgeInsets.only(bottom: 10),
+                decoration: BoxDecoration(
+                  color: Colors.white70,
+                  border: Border.fromBorderSide(BorderSide()),
+                  borderRadius: BorderRadius.circular(20),
                 ),
+                height: 60,
+                child: Center(
+                  child: Text('Area: ${_meal.strArea}'),
+                ),
+              ),
                 Container(
-                  height: 50,
-                  width: 50,
+                  margin: EdgeInsets.only(bottom: 10),
                   decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(40),
+                    color: Colors.white70,
+                    border: Border.fromBorderSide(BorderSide()),
+                    borderRadius: BorderRadius.circular(20),
                   ),
-                  child: Icon(Icons.search),
+                  height: 60,
+                  child: Center(
+                    child: Text('Area: ${_meal.strCategory}'),
+                  ),
                 ),
+
               ],
             ),
-          ),
-              Consumer<Recipe>(
+            Container(
+              margin: EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                color: Colors.white70,
+                border: Border.fromBorderSide(BorderSide()),
+                borderRadius: BorderRadius.circular(20),
+
+              ),
+              child: Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Text(_meal.strInstructions),
+                ),
+              ),
+            ),
+
+              Consumer<SearchMealProvider>(
                 builder: (context, recipeProvider, child) {
                   return Center(
                     child: Column(
                       children: [
                         Visibility(
-                            visible: recipeProvider.isLoaded,
+                            visible: recipeProvider.searchMealList.isNotEmpty,
                             replacement: const CircularProgressIndicator(),
                             child: Column(
                               children: [
@@ -81,24 +99,13 @@ class RecipeScreen extends StatelessWidget {
                                   width: 300,
                                   child: Divider(color: Colors.tealAccent, height: 55,),
                                 ),
-                                 Align(
-                                   alignment: Alignment.centerLeft,
-                                   child: Container( child: Center(child: Text('Recipe', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white), textAlign: TextAlign.center,)),
-                                     width: 150,
-                                    height: 35,
-                                    decoration: const BoxDecoration(
-                                      color: Colors.tealAccent,
-                                      borderRadius: BorderRadius.only(
-                                        bottomRight: Radius.circular(50),
-                                      ),
-                                    ),),
-                                 ),
+
                                 const SizedBox(
                                   height: 20,
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
-                                  child: Text(recipeProvider.recipeInstructions[index], style: TextStyle(),),
+                                  child: Text(_meal.strMeal, style: TextStyle(),),
                                 ),
                                 const SizedBox(
                                   width: 300,

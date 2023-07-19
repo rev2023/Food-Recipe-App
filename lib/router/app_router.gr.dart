@@ -9,7 +9,8 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i5;
-import 'package:flutter/cupertino.dart' as _i6;
+import 'package:flutter/cupertino.dart' as _i7;
+import 'package:Food_Recipe_App/models/meal.dart' as _i6;
 import 'package:Food_Recipe_App/screens/display_search_screen.dart' as _i1;
 import 'package:Food_Recipe_App/screens/home_screen.dart' as _i2;
 import 'package:Food_Recipe_App/screens/recipe_screen.dart' as _i3;
@@ -36,7 +37,7 @@ abstract class $AppRouter extends _i5.RootStackRouter {
       final args = routeData.argsAs<RecipeRouteArgs>();
       return _i5.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i3.RecipeScreen(args.index),
+        child: _i3.RecipeScreen(args.meal),
       );
     },
     SplashRoute.name: (routeData) {
@@ -82,11 +83,11 @@ class HomeRoute extends _i5.PageRouteInfo<void> {
 /// [_i3.RecipeScreen]
 class RecipeRoute extends _i5.PageRouteInfo<RecipeRouteArgs> {
   RecipeRoute({
-    required int index,
+    required _i6.Meal meal,
     List<_i5.PageRouteInfo>? children,
   }) : super(
           RecipeRoute.name,
-          args: RecipeRouteArgs(index: index),
+          args: RecipeRouteArgs(meal: meal),
           initialChildren: children,
         );
 
@@ -97,13 +98,13 @@ class RecipeRoute extends _i5.PageRouteInfo<RecipeRouteArgs> {
 }
 
 class RecipeRouteArgs {
-  const RecipeRouteArgs({required this.index});
+  const RecipeRouteArgs({required this.meal});
 
-  final int index;
+  final _i6.Meal meal;
 
   @override
   String toString() {
-    return 'RecipeRouteArgs{index: $index}';
+    return 'RecipeRouteArgs{meal: $meal}';
   }
 }
 
@@ -111,7 +112,7 @@ class RecipeRouteArgs {
 /// [_i4.SplashScreen]
 class SplashRoute extends _i5.PageRouteInfo<SplashRouteArgs> {
   SplashRoute({
-    _i6.Key? key,
+    _i7.Key? key,
     List<_i5.PageRouteInfo>? children,
   }) : super(
           SplashRoute.name,
@@ -128,7 +129,7 @@ class SplashRoute extends _i5.PageRouteInfo<SplashRouteArgs> {
 class SplashRouteArgs {
   const SplashRouteArgs({this.key});
 
-  final _i6.Key? key;
+  final _i7.Key? key;
 
   @override
   String toString() {
