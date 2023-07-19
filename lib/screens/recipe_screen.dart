@@ -1,9 +1,9 @@
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:food_app/models/recipe.dart';
-import 'package:food_app/provider/random_meal_provider.dart';
-import 'package:food_app/widgets/food_card.dart';
+import 'package:Food_Recipe_App/models/recipe.dart';
+import 'package:Food_Recipe_App/provider/random_meal_provider.dart';
+import 'package:Food_Recipe_App/widgets/food_card.dart';
 import 'package:provider/provider.dart';
 
 import 'home_screen.dart';

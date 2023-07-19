@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:food_app/models/meal_category.dart';
-import 'package:food_app/widgets/food_card.dart';
+import 'package:Food_Recipe_App/models/meal_category.dart';
+import 'package:Food_Recipe_App/widgets/food_card.dart';
 import 'package:provider/provider.dart';
 
 class MealCategoryApi {

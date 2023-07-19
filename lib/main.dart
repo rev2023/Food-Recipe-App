@@ -1,10 +1,17 @@
+import 'package:Food_Recipe_App/provider/search_meal_provider.dart';
+import 'package:Food_Recipe_App/router/app_router.gr.dart';
 import 'package:flutter/material.dart';
-import 'package:food_app/provider/meal_category_provider.dart';
-import 'package:food_app/provider/random_meal_provider.dart';
-import 'package:food_app/repository/meal_category_repository.dart';
-import 'package:food_app/services/api/meal_category_api.dart';
-import 'package:food_app/services/api/random_meals_api.dart';
+import 'package:Food_Recipe_App/provider/meal_category_provider.dart';
+import 'package:Food_Recipe_App/provider/random_meal_provider.dart';
+import 'package:Food_Recipe_App/repository/meal_category_repository.dart';
+import 'package:Food_Recipe_App/services/api/meal_category_api.dart';
+import 'package:Food_Recipe_App/services/api/random_meals_api.dart';
 import 'package:provider/provider.dart';
+import 'package:auto_route/auto_route.dart';
+import 'package:Food_Recipe_App/router/app_router.gr.dart';
+import 'package:Food_Recipe_App/router/app_router.dart';
+
+
 
 import 'models/recipe.dart';
 import 'screens/home_screen.dart';
@@ -28,9 +35,14 @@ void main() {
         ChangeNotifierProvider<RandomMealProvider>(
           create: (context) => RandomMealProvider(),
         ),
+
+        ChangeNotifierProvider<SearchMealProvider>(
+          create: (context) => SearchMealProvider(),
+         ),
       ],
       child: const MyApp(),
     ),
+
   );
 }
 
@@ -39,13 +51,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    AppRouter appRouter = AppRouter();
+
+    return MaterialApp.router(
+      routerConfig: appRouter.config(),
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+
+        title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const HomeScreen(),
     );
   }
 }

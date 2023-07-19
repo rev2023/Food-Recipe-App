@@ -1,3 +1,4 @@
+import 'package:Food_Recipe_App/widgets/app_bar.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -170,31 +171,9 @@ class _HomeState extends State<HomeScreen> {
     for (var categoryName in mealCategoryProvider.mealCategories) {
       categoryNames.add(categoryName.strCategory);
     }
-    print(imagePaths);
 
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.amber,
-        foregroundColor: Colors.amber,
-        toolbarHeight: 80,
-        shadowColor: Colors.amber,
-        title: Row(
-          children: [
-            Container(
-              margin: const EdgeInsets.only(right: 50),
-              child: Image.asset(
-                'lib/images/logo.png',
-                width: 80,
-                height: 50,
-              ),
-            ),
-            Expanded(
-              child: SearchBar(),
-            ),
-          ],
-        ),
-      ),
+      appBar: CustomAppBar(),
       body: ListView(
         children: [
           Container(

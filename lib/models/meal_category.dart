@@ -1,4 +1,4 @@
-import 'package:food_app/services/api/meal_category_api.dart';
+import 'package:Food_Recipe_App/services/api/meal_category_api.dart';
 
 import '../services/api/meal_category_api.dart';
 

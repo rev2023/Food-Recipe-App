@@ -14,7 +14,6 @@ class RandomMealProvider extends ChangeNotifier {
     if(randomMealList.length<=5) {
       randomMeal.fetchData().then((mealList) {
       randomMealList.add(mealList.mealsList[0]);
-      print(randomMealList.length);
     });
     }
   }

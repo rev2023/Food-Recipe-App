@@ -43,9 +43,9 @@ class _FoodCardState extends State<FoodCard> {
               borderRadius: BorderRadius.circular(20),
               color: Colors.tealAccent,
             ),
-            height: 50,
-            width: 120,
-            margin: const EdgeInsets.fromLTRB(30, 130, 20, 30),
+            height: 60,
+            width: 160,
+            margin: const EdgeInsets.fromLTRB(5, 130, 20, 30),
             child: Center(
               child: Text(
                 widget.text,

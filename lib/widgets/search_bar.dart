@@ -1,8 +1,11 @@
+import 'package:Food_Recipe_App/provider/search_meal_provider.dart';
+import 'package:Food_Recipe_App/services/api/search_meal.api_dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:food_app/router/app_router.gr.dart';
+import 'package:Food_Recipe_App/router/app_router.gr.dart';
 import 'package:material_floating_search_bar_2/material_floating_search_bar_2.dart';
+import 'package:provider/provider.dart';
 
 class SearchBar extends StatefulWidget {
   @override
@@ -38,8 +41,12 @@ class _SearchState extends State<SearchBar> {
         onQueryChanged: (query) {
           // Call your model, bloc, controller here.
         },
-        onSubmitted: (query){
-          context.router.push(RecipeRoute(index: 3));
+        onSubmitted: (query) {
+          print(query);
+          SearchMealProvider searchMealProvider = Provider.of<SearchMealProvider>(context, listen: false);
+          searchMealProvider.query = query;
+          searchMealProvider.fetchData();
+          context.router.push( DisplaySearchRoute());
         },
         transition: CircularFloatingSearchBarTransition(),
         actions: [

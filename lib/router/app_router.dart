@@ -8,9 +8,11 @@ class AppRouter extends $AppRouter {
 
   @override
   List<AutoRoute> get routes => [
-    AutoRoute(path: '/screens/splash_screen.dart', page: SplashRoute.page, initial: false),
-    AutoRoute(path: '/screens/home_screen.dart', page: HomeRoute.page, initial: true,),
+    AutoRoute(path: '/screens/splash_screen.dart', page: SplashRoute.page, initial: true),
+    AutoRoute(path: '/screens/home_screen.dart', page: HomeRoute.page),
     AutoRoute(path: '/screens/recipe_screen.dart', page: RecipeRoute.page),
+    AutoRoute(path: '/screens/display_search_screen.dart', page: DisplaySearchRoute.page,),
+
 
 
 

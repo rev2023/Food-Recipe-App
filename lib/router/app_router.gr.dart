@@ -8,45 +8,66 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i4;
-import 'package:flutter/cupertino.dart' as _i5;
-import 'package:food_app/screens/home_screen.dart' as _i1;
-import 'package:food_app/screens/recipe_screen.dart' as _i2;
-import 'package:food_app/screens/splash_screen.dart' as _i3;
+import 'package:auto_route/auto_route.dart' as _i5;
+import 'package:flutter/cupertino.dart' as _i6;
+import 'package:Food_Recipe_App/screens/display_search_screen.dart' as _i1;
+import 'package:Food_Recipe_App/screens/home_screen.dart' as _i2;
+import 'package:Food_Recipe_App/screens/recipe_screen.dart' as _i3;
+import 'package:Food_Recipe_App/screens/splash_screen.dart' as _i4;
 
-abstract class $AppRouter extends _i4.RootStackRouter {
+abstract class $AppRouter extends _i5.RootStackRouter {
   $AppRouter({super.navigatorKey});
 
   @override
-  final Map<String, _i4.PageFactory> pagesMap = {
-    HomeRoute.name: (routeData) {
-      return _i4.AutoRoutePage<dynamic>(
+  final Map<String, _i5.PageFactory> pagesMap = {
+    DisplaySearchRoute.name: (routeData) {
+      return _i5.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i1.HomeScreen(),
+        child: _i1.DisplaySearchScreen(),
+      );
+    },
+    HomeRoute.name: (routeData) {
+      return _i5.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const _i2.HomeScreen(),
       );
     },
     RecipeRoute.name: (routeData) {
       final args = routeData.argsAs<RecipeRouteArgs>();
-      return _i4.AutoRoutePage<dynamic>(
+      return _i5.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i2.RecipeScreen(args.index),
+        child: _i3.RecipeScreen(args.index),
       );
     },
     SplashRoute.name: (routeData) {
       final args = routeData.argsAs<SplashRouteArgs>(
           orElse: () => const SplashRouteArgs());
-      return _i4.AutoRoutePage<dynamic>(
+      return _i5.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i3.SplashScreen(key: args.key),
+        child: _i4.SplashScreen(key: args.key),
       );
     },
   };
 }
 
 /// generated route for
-/// [_i1.HomeScreen]
-class HomeRoute extends _i4.PageRouteInfo<void> {
-  const HomeRoute({List<_i4.PageRouteInfo>? children})
+/// [_i1.DisplaySearchScreen]
+class DisplaySearchRoute extends _i5.PageRouteInfo<void> {
+  const DisplaySearchRoute({List<_i5.PageRouteInfo>? children})
+      : super(
+          DisplaySearchRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'DisplaySearchRoute';
+
+  static const _i5.PageInfo<void> page = _i5.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i2.HomeScreen]
+class HomeRoute extends _i5.PageRouteInfo<void> {
+  const HomeRoute({List<_i5.PageRouteInfo>? children})
       : super(
           HomeRoute.name,
           initialChildren: children,
@@ -54,15 +75,15 @@ class HomeRoute extends _i4.PageRouteInfo<void> {
 
   static const String name = 'HomeRoute';
 
-  static const _i4.PageInfo<void> page = _i4.PageInfo<void>(name);
+  static const _i5.PageInfo<void> page = _i5.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i2.RecipeScreen]
-class RecipeRoute extends _i4.PageRouteInfo<RecipeRouteArgs> {
+/// [_i3.RecipeScreen]
+class RecipeRoute extends _i5.PageRouteInfo<RecipeRouteArgs> {
   RecipeRoute({
     required int index,
-    List<_i4.PageRouteInfo>? children,
+    List<_i5.PageRouteInfo>? children,
   }) : super(
           RecipeRoute.name,
           args: RecipeRouteArgs(index: index),
@@ -71,8 +92,8 @@ class RecipeRoute extends _i4.PageRouteInfo<RecipeRouteArgs> {
 
   static const String name = 'RecipeRoute';
 
-  static const _i4.PageInfo<RecipeRouteArgs> page =
-      _i4.PageInfo<RecipeRouteArgs>(name);
+  static const _i5.PageInfo<RecipeRouteArgs> page =
+      _i5.PageInfo<RecipeRouteArgs>(name);
 }
 
 class RecipeRouteArgs {
@@ -87,11 +108,11 @@ class RecipeRouteArgs {
 }
 
 /// generated route for
-/// [_i3.SplashScreen]
-class SplashRoute extends _i4.PageRouteInfo<SplashRouteArgs> {
+/// [_i4.SplashScreen]
+class SplashRoute extends _i5.PageRouteInfo<SplashRouteArgs> {
   SplashRoute({
-    _i5.Key? key,
-    List<_i4.PageRouteInfo>? children,
+    _i6.Key? key,
+    List<_i5.PageRouteInfo>? children,
   }) : super(
           SplashRoute.name,
           args: SplashRouteArgs(key: key),
@@ -100,14 +121,14 @@ class SplashRoute extends _i4.PageRouteInfo<SplashRouteArgs> {
 
   static const String name = 'SplashRoute';
 
-  static const _i4.PageInfo<SplashRouteArgs> page =
-      _i4.PageInfo<SplashRouteArgs>(name);
+  static const _i5.PageInfo<SplashRouteArgs> page =
+      _i5.PageInfo<SplashRouteArgs>(name);
 }
 
 class SplashRouteArgs {
   const SplashRouteArgs({this.key});
 
-  final _i5.Key? key;
+  final _i6.Key? key;
 
   @override
   String toString() {
