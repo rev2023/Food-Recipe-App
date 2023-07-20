@@ -1,3 +1,4 @@
+import 'package:Food_Recipe_App/screens/home_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
@@ -34,7 +35,7 @@ class _SplashScreenState extends State<SplashScreen> {
    _navigateToHome() async{
     await Future.delayed(Duration(milliseconds: 1500));
     if (mounted) {
-      context.router.replace(HomeRoute());
+      context.router.replace(const HomeRoute());
     }  }
   @override
   Widget build(BuildContext context) {

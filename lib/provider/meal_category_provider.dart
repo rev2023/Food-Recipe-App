@@ -9,8 +9,9 @@ class MealCategoryProvider extends ChangeNotifier {
   List<MealCategory> _mealCategories = [];
   List<MealCategory> get mealCategories => _mealCategories;
 
-  MealCategoryProvider(this._mealCategoryRepository);
-
+  MealCategoryProvider(this._mealCategoryRepository){
+    getMealCategories();
+  }
   void getMealCategories() async {
     // Start loading
     List<MealCategory> categories = await _mealCategoryRepository.getMealCategories();

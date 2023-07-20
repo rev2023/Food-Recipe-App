@@ -1,20 +1,25 @@
 import 'package:flutter/cupertino.dart';
-import 'dart:math';
-
 import '../services/api/random_meals_api.dart';
 import '../models/meal.dart';
 
 class RandomMealProvider extends ChangeNotifier {
-  RandomMealApi randomMeal = RandomMealApi();
   List<Meal> randomMealList = [];
+  bool isComplete = false;
 
-  RandomMealProvider(){}
+  RandomMealProvider(){
+    fetchData();
+  }
 
-  void fetchData(){
-    if(randomMealList.length<=5) {
-      randomMeal.fetchData().then((mealList) {
-      randomMealList.add(mealList.mealsList[0]);
-    });
-    }
+  Future<void> fetchData() async {
+    isComplete = false;
+
+      for (int i = 0; i < 4; i++) {
+        RandomMealApi randomMealApi = RandomMealApi();
+        randomMealApi.fetchData().then((meals) {
+          randomMealList.add(meals.mealsList[0]);
+        });
+        isComplete = true;
+      }
+
   }
 }
