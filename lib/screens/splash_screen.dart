@@ -1,15 +1,8 @@
-import 'package:Food_Recipe_App/screens/home_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:Food_Recipe_App/models/meal_category.dart';
-import 'package:Food_Recipe_App/repository/meal_category_repository.dart';
 import 'package:Food_Recipe_App/router/app_router.gr.dart';
-import 'package:Food_Recipe_App/services/api/meal_category_api.dart';
-import 'package:provider/provider.dart';
-import '../widgets/carousel_card.dart';
-import '../widgets/search_bar.dart';
 
 @RoutePage()
 class SplashScreen extends StatefulWidget {

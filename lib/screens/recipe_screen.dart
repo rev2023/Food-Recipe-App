@@ -1,15 +1,9 @@
-import 'package:Food_Recipe_App/provider/search_meal_provider.dart';
 import 'package:auto_route/annotations.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:Food_Recipe_App/models/recipe.dart';
-import 'package:Food_Recipe_App/provider/random_meal_provider.dart';
 import 'package:Food_Recipe_App/widgets/food_card.dart';
-import 'package:provider/provider.dart';
+import 'package:Food_Recipe_App/models/meal.dart';
+import 'package:Food_Recipe_App/widgets/app_bar.dart';
 
-import '../models/meal.dart';
-import '../widgets/app_bar.dart';
-import 'home_screen.dart';
 
 @RoutePage()
 class RecipeScreen extends StatelessWidget {

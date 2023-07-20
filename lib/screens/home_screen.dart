@@ -1,13 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import '../provider/meal_category_provider.dart';
-import '../provider/random_meal_provider.dart';
-import '../router/app_router.gr.dart';
-import '../widgets/app_bar.dart';
-import '../widgets/carousel_card.dart';
-import '../widgets/food_card.dart';
+import 'package:Food_Recipe_App/provider/meal_category_provider.dart';
+import 'package:Food_Recipe_App/provider/random_meal_provider.dart';
+import 'package:Food_Recipe_App/router/app_router.gr.dart';
+import 'package:Food_Recipe_App/widgets/app_bar.dart';
+import 'package:Food_Recipe_App/widgets/carousel_card.dart';
+import 'package:Food_Recipe_App/widgets/food_card.dart';
 
 @RoutePage()
 class HomeScreen extends StatelessWidget {
@@ -36,7 +35,7 @@ class HomeScreen extends StatelessWidget {
           children: [
             Container(
               height: 50,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Colors.amber,
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(40),
@@ -84,7 +83,7 @@ class HomeScreen extends StatelessWidget {
                         alignment: Alignment.center,
                         child: Center(
                           child: Container(
-                            child: Text(
+                            child: const Text(
                               'Random Recipes',
                               style: TextStyle(
                                 color: Colors.amberAccent,
@@ -152,7 +151,7 @@ class HomeScreen extends StatelessWidget {
                   SizedBox(height: 30),
                   Container(
                     height: 20,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       color: Colors.amber,
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(40),
