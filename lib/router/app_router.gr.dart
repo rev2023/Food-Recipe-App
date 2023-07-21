@@ -9,8 +9,7 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i5;
-import 'package:flutter/cupertino.dart' as _i7;
-import 'package:Food_Recipe_App/models/meal.dart' as _i6;
+import 'package:flutter/cupertino.dart' as _i6;
 import 'package:Food_Recipe_App/screens/display_search_screen.dart' as _i1;
 import 'package:Food_Recipe_App/screens/home_screen.dart' as _i2;
 import 'package:Food_Recipe_App/screens/recipe_screen.dart' as _i3;
@@ -30,14 +29,13 @@ abstract class $AppRouter extends _i5.RootStackRouter {
     HomeRoute.name: (routeData) {
       return _i5.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child:  _i2.HomeScreen(),
+        child: const _i2.HomeScreen(),
       );
     },
     RecipeRoute.name: (routeData) {
-      final args = routeData.argsAs<RecipeRouteArgs>();
       return _i5.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i3.RecipeScreen(args.meal),
+        child: _i3.RecipeScreen(),
       );
     },
     SplashRoute.name: (routeData) {
@@ -81,38 +79,23 @@ class HomeRoute extends _i5.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i3.RecipeScreen]
-class RecipeRoute extends _i5.PageRouteInfo<RecipeRouteArgs> {
-  RecipeRoute({
-    required _i6.Meal meal,
-    List<_i5.PageRouteInfo>? children,
-  }) : super(
+class RecipeRoute extends _i5.PageRouteInfo<void> {
+  const RecipeRoute({List<_i5.PageRouteInfo>? children})
+      : super(
           RecipeRoute.name,
-          args: RecipeRouteArgs(meal: meal),
           initialChildren: children,
         );
 
   static const String name = 'RecipeRoute';
 
-  static const _i5.PageInfo<RecipeRouteArgs> page =
-      _i5.PageInfo<RecipeRouteArgs>(name);
-}
-
-class RecipeRouteArgs {
-  const RecipeRouteArgs({required this.meal});
-
-  final _i6.Meal meal;
-
-  @override
-  String toString() {
-    return 'RecipeRouteArgs{meal: $meal}';
-  }
+  static const _i5.PageInfo<void> page = _i5.PageInfo<void>(name);
 }
 
 /// generated route for
 /// [_i4.SplashScreen]
 class SplashRoute extends _i5.PageRouteInfo<SplashRouteArgs> {
   SplashRoute({
-    _i7.Key? key,
+    _i6.Key? key,
     List<_i5.PageRouteInfo>? children,
   }) : super(
           SplashRoute.name,
@@ -129,7 +112,7 @@ class SplashRoute extends _i5.PageRouteInfo<SplashRouteArgs> {
 class SplashRouteArgs {
   const SplashRouteArgs({this.key});
 
-  final _i7.Key? key;
+  final _i6.Key? key;
 
   @override
   String toString() {

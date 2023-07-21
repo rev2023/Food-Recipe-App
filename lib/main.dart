@@ -1,10 +1,13 @@
 import 'package:Food_Recipe_App/provider/home_screen_provider.dart';
+import 'package:Food_Recipe_App/provider/recipe_screen_provider.dart';
 import 'package:Food_Recipe_App/provider/search_screen_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:Food_Recipe_App/repository/meal_category_repository.dart';
 import 'package:Food_Recipe_App/services/api/meal_category_api.dart';
 import 'package:provider/provider.dart';
 import 'package:Food_Recipe_App/router/app_router.dart';
+
+import 'models/meal.dart';
 
 void main() {
   runApp(
@@ -25,6 +28,9 @@ void main() {
         ChangeNotifierProvider<SearchMealProvider>(
           create: (context) => SearchMealProvider(),
          ),
+        ChangeNotifierProvider<RecipeScreenProvider>(
+          create: (context) => RecipeScreenProvider(),
+        ),
       ],
       child: const MyApp(),
     ),

@@ -1,3 +1,4 @@
+import 'package:Food_Recipe_App/provider/recipe_screen_provider.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -14,14 +15,15 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final homeScreenProvider = Provider.of<HomeScreenProvider>(context, listen: true);
+    final homeScreenProvider = Provider.of<HomeScreenProvider>(context);
+    var recipeScreenProvider = Provider.of<RecipeScreenProvider>(context, listen: false);
 
 
     return Scaffold(
       appBar: CustomAppBar(),
       body: Visibility(
         visible: homeScreenProvider.randomMealList.length >= 4 && homeScreenProvider.mealCategories.isNotEmpty,
-        replacement: Center(child: CircularProgressIndicator()),
+        replacement: Center(child: CircularProgressIndicator(color: Colors.yellow)),
         child: ListView(
           children: [
             Container(
@@ -100,7 +102,8 @@ class HomeScreen extends StatelessWidget {
                                   imagePath: homeScreenProvider.randomMealList[0].strMealThumb,
                                   text: homeScreenProvider.randomMealList[0].strMeal,
                                   onTap: () {
-                                    context.router.push(RecipeRoute(meal: homeScreenProvider.randomMealList[0]));
+                                    recipeScreenProvider.set(homeScreenProvider.randomMealList[0]);
+                                    context.router.push(RecipeRoute());
                                   },
                                 ),
                               const SizedBox(height: 45, width: 15),
@@ -108,7 +111,8 @@ class HomeScreen extends StatelessWidget {
                                   imagePath: homeScreenProvider.randomMealList[1].strMealThumb,
                                   text: homeScreenProvider.randomMealList[1].strMeal,
                                   onTap: () {
-                                    context.router.push(RecipeRoute(meal: homeScreenProvider.randomMealList[1]));
+                                    recipeScreenProvider.set(homeScreenProvider.randomMealList[1]);
+                                    context.router.push(RecipeRoute( ));
                                   },
                                 ),
                             ],
@@ -122,7 +126,9 @@ class HomeScreen extends StatelessWidget {
                                   imagePath: homeScreenProvider.randomMealList[2].strMealThumb,
                                   text: homeScreenProvider.randomMealList[2].strMeal,
                                   onTap: () {
-                                    context.router.push(RecipeRoute(meal: homeScreenProvider.randomMealList[2]));
+
+                                    recipeScreenProvider.set(homeScreenProvider.randomMealList[2]);
+                                    context.router.push(RecipeRoute());
                                   },
                                 ),
                               const SizedBox(height: 45, width: 17),
@@ -130,7 +136,8 @@ class HomeScreen extends StatelessWidget {
                                   imagePath: homeScreenProvider.randomMealList[3].strMealThumb,
                                   text: homeScreenProvider.randomMealList[3].strMeal,
                                   onTap: () {
-                                    context.router.push(RecipeRoute(meal: homeScreenProvider.randomMealList[3]));
+                                    recipeScreenProvider.set(homeScreenProvider.randomMealList[3]);
+                                    context.router.push(RecipeRoute());
                                   },
                                 ),
                             ],

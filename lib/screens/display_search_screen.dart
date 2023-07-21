@@ -1,3 +1,4 @@
+import 'package:Food_Recipe_App/provider/recipe_screen_provider.dart';
 import 'package:Food_Recipe_App/widgets/app_bar.dart';
 import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
@@ -18,6 +19,7 @@ class DisplaySearchScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     var searchMealProvider = Provider.of<SearchMealProvider>(context);
     var searchMealList = searchMealProvider.searchMealList;
+    var recipeScreenProvider = Provider.of<RecipeScreenProvider>(context);
 
     return Scaffold(
       appBar: CustomAppBar(),
@@ -28,7 +30,7 @@ class DisplaySearchScreen extends StatelessWidget {
             Center(child: Text('Your Search Results:')),
             SizedBox(height: 30),
             Visibility(
-              replacement: Center(child: CircularProgressIndicator()),
+              replacement: Center(child: CircularProgressIndicator(color: Colors.yellow,)),
               visible: !searchMealProvider.isLoading,
               child: Expanded(
                 child: ListView.builder(
@@ -46,7 +48,8 @@ class DisplaySearchScreen extends StatelessWidget {
                                 imagePath: meal.strMealThumb,
                                 text: meal.strMeal,
                                 onTap: () {
-                                  context.router.push(RecipeRoute(meal: meal));
+                                  recipeScreenProvider.set(meal);
+                                  context.router.push(RecipeRoute());
                                 },
                               ),
                             ),

@@ -1,19 +1,23 @@
+import 'package:Food_Recipe_App/provider/recipe_screen_provider.dart';
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:Food_Recipe_App/widgets/food_card.dart';
 import 'package:Food_Recipe_App/models/meal.dart';
 import 'package:Food_Recipe_App/widgets/app_bar.dart';
+import 'package:provider/provider.dart';
 
 
 @RoutePage()
 class RecipeScreen extends StatelessWidget {
-  final Meal _meal;
 
-  RecipeScreen(this._meal, {super.key});
+
+  RecipeScreen();
 
 
   @override
   Widget build(BuildContext context) {
+
+    RecipeScreenProvider recipeProvider = Provider.of<RecipeScreenProvider>(context);
 
     return Scaffold(
       appBar:CustomAppBar(),
@@ -25,8 +29,8 @@ class RecipeScreen extends StatelessWidget {
           children: [
             SizedBox(height: 30,),
             FoodCard(
-              imagePath: _meal.strMealThumb,
-              text: _meal.strMeal,
+              imagePath: recipeProvider.meal.strMealThumb,
+              text: recipeProvider.meal.strMeal,
               onTap: () {},
             ),             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -39,7 +43,7 @@ class RecipeScreen extends StatelessWidget {
                 ),
                 height: 60,
                 child: Center(
-                  child: Text('Area: ${_meal.strArea}'),
+                  child: Text('Area: ${recipeProvider.meal.strArea}'),
                 ),
               ),
                 Container(
@@ -51,7 +55,7 @@ class RecipeScreen extends StatelessWidget {
                   ),
                   height: 60,
                   child: Center(
-                    child: Text('Category: ${_meal.strCategory}'),
+                    child: Text('Category: ${recipeProvider.meal.strCategory}'),
                   ),
                 ),
 
@@ -68,7 +72,7 @@ class RecipeScreen extends StatelessWidget {
               child: Center(
                 child: Padding(
                   padding: const EdgeInsets.all(20),
-                  child: Text(_meal.strInstructions),
+                  child: Text(recipeProvider.meal.strInstructions),
                 ),
               ),
             ),
