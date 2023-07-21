@@ -6,7 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../provider/search_meal_provider.dart';
+import '../provider/search_screen_provider.dart';
 import '../router/app_router.gr.dart';
 import '../widgets/food_card.dart';
 

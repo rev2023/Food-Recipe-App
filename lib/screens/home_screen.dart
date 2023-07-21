@@ -1,12 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:Food_Recipe_App/provider/meal_category_provider.dart';
-import 'package:Food_Recipe_App/provider/random_meal_provider.dart';
 import 'package:Food_Recipe_App/router/app_router.gr.dart';
 import 'package:Food_Recipe_App/widgets/app_bar.dart';
 import 'package:Food_Recipe_App/widgets/carousel_card.dart';
 import 'package:Food_Recipe_App/widgets/food_card.dart';
+
+import '../provider/home_screen_provider.dart';
 
 @RoutePage()
 class HomeScreen extends StatelessWidget {
@@ -14,23 +14,14 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final mealCategoryProvider = Provider.of<MealCategoryProvider>(context);
-    final mealProvider = Provider.of<RandomMealProvider>(context, listen: false);
+    final homeScreenProvider = Provider.of<HomeScreenProvider>(context, listen: true);
 
-
-
-    List<String> categoryImagePaths = [];
-    List<String> categoryNames = [];
-
-    for (var categoryImage in mealCategoryProvider.mealCategories) {
-      categoryImagePaths.add(categoryImage.strCategoryThumb);
-      categoryNames.add(categoryImage.strCategory);
-    }
 
     return Scaffold(
       appBar: CustomAppBar(),
       body: Visibility(
-        visible: mealCategoryProvider.mealCategories.length == 14,
+        visible: homeScreenProvider.randomMealList.length >= 4 && homeScreenProvider.mealCategories.isNotEmpty,
+        replacement: Center(child: CircularProgressIndicator()),
         child: ListView(
           children: [
             Container(
@@ -67,8 +58,8 @@ class HomeScreen extends StatelessWidget {
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: CarouselCard(
-                      categoryImagePaths,
-                      categoryNames,
+                      homeScreenProvider.categoryImagePaths,
+                      homeScreenProvider.categoryNames,
                     ),
                   ),
                 ],
@@ -97,48 +88,49 @@ class HomeScreen extends StatelessWidget {
                       const SizedBox(
                         height: 45,
                       ),
-                      Column(
+
+                        Column(
                         children: [
-                          Row(
+                           if (homeScreenProvider.randomMealList.length > 3)
+
+                            Row(
                             children: [
                               const SizedBox(height: 45, width: 20),
-                              if (mealProvider.randomMealList.isNotEmpty == true) // Check if the list is not empty
                                 FoodCard(
-                                  imagePath: mealProvider.randomMealList[0].strMealThumb,
-                                  text: mealProvider.randomMealList[0].strMeal,
+                                  imagePath: homeScreenProvider.randomMealList[0].strMealThumb,
+                                  text: homeScreenProvider.randomMealList[0].strMeal,
                                   onTap: () {
-                                    context.router.push(RecipeRoute(meal: mealProvider.randomMealList[0]));
+                                    context.router.push(RecipeRoute(meal: homeScreenProvider.randomMealList[0]));
                                   },
                                 ),
                               const SizedBox(height: 45, width: 15),
-                              if (mealProvider.randomMealList.length > 1) // Check if there are at least 2 elements in the list
                                 FoodCard(
-                                  imagePath: mealProvider.randomMealList[1].strMealThumb,
-                                  text: mealProvider.randomMealList[1].strMeal,
+                                  imagePath: homeScreenProvider.randomMealList[1].strMealThumb,
+                                  text: homeScreenProvider.randomMealList[1].strMeal,
                                   onTap: () {
-                                    context.router.push(RecipeRoute(meal: mealProvider.randomMealList[1]));
+                                    context.router.push(RecipeRoute(meal: homeScreenProvider.randomMealList[1]));
                                   },
                                 ),
                             ],
                           ),
-                          Row(
+                          if (homeScreenProvider.randomMealList.length > 3)
+
+                            Row(
                             children: [
                               const SizedBox(height: 65, width: 17),
-                              if (mealProvider.randomMealList.length > 2) // Check if there are at least 3 elements in the list
                                 FoodCard(
-                                  imagePath: mealProvider.randomMealList[2].strMealThumb,
-                                  text: mealProvider.randomMealList[2].strMeal,
+                                  imagePath: homeScreenProvider.randomMealList[2].strMealThumb,
+                                  text: homeScreenProvider.randomMealList[2].strMeal,
                                   onTap: () {
-                                    context.router.push(RecipeRoute(meal: mealProvider.randomMealList[2]));
+                                    context.router.push(RecipeRoute(meal: homeScreenProvider.randomMealList[2]));
                                   },
                                 ),
                               const SizedBox(height: 45, width: 17),
-                              if (mealProvider.randomMealList.length > 3) // Check if there are at least 4 elements in the list
                                 FoodCard(
-                                  imagePath: mealProvider.randomMealList[3].strMealThumb,
-                                  text: mealProvider.randomMealList[3].strMeal,
+                                  imagePath: homeScreenProvider.randomMealList[3].strMealThumb,
+                                  text: homeScreenProvider.randomMealList[3].strMeal,
                                   onTap: () {
-                                    context.router.push(RecipeRoute(meal: mealProvider.randomMealList[3]));
+                                    context.router.push(RecipeRoute(meal: homeScreenProvider.randomMealList[3]));
                                   },
                                 ),
                             ],

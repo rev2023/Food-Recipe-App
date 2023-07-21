@@ -19,7 +19,6 @@ class MealByIdApi {
       var apiEndpoint = 'https://www.themealdb.com/api/json/v1/1/lookup.php?i=$_id';
       final Response<dynamic> response = await Dio().get(apiEndpoint);
       if (response.statusCode == 200) {
-        print(apiEndpoint);
         return MealList.fromJson(response.data);
       } else {
         throw Exception('Failed to fetch meal data. StatusCode: ${response.statusCode}');

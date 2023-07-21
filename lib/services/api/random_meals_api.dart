@@ -8,6 +8,7 @@ class RandomMealApi {
     try {
       const apiEndpoint = 'https://www.themealdb.com/api/json/v1/1/random.php';
       final Response<dynamic> response = await Dio().get(apiEndpoint);
+      print(apiEndpoint);
       return MealList.fromJson(response.data);
     } catch (error) {
       rethrow;

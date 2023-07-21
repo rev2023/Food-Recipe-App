@@ -9,9 +9,8 @@ import 'package:Food_Recipe_App/widgets/app_bar.dart';
 class RecipeScreen extends StatelessWidget {
   final Meal _meal;
 
-  RecipeScreen(this._meal,);
+  RecipeScreen(this._meal, {super.key});
 
-  String searchValue = '';
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +51,7 @@ class RecipeScreen extends StatelessWidget {
                   ),
                   height: 60,
                   child: Center(
-                    child: Text('Area: ${_meal.strCategory}'),
+                    child: Text('Category: ${_meal.strCategory}'),
                   ),
                 ),
 

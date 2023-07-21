@@ -1,4 +1,4 @@
-import 'package:Food_Recipe_App/provider/search_meal_provider.dart';
+import 'package:Food_Recipe_App/provider/search_screen_provider.dart';
 import 'package:Food_Recipe_App/services/api/search_meal.api_dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';

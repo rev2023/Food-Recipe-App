@@ -9,6 +9,7 @@ class SearchMealProvider extends ChangeNotifier {
   bool isLoading = true;
   List<Meal> searchMealList = [];
 
+
   set query(String query) {
     _query = query;
   }

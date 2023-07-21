@@ -1,10 +1,9 @@
+import 'package:Food_Recipe_App/provider/home_screen_provider.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import '../provider/meal_category_provider.dart';
-import '../provider/search_meal_provider.dart';
+import '../provider/search_screen_provider.dart';
 import '../router/app_router.gr.dart';
 
 class CarouselCard extends StatelessWidget {
@@ -84,7 +83,7 @@ class CarouselCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<MealCategoryProvider>(
+    return Consumer<HomeScreenProvider>(
       builder: (context, mealProvider, _) {
         return SingleChildScrollView(
           scrollDirection: Axis.horizontal,
