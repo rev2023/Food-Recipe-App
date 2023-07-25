@@ -22,7 +22,6 @@ class CarouselCard extends StatelessWidget {
 
       return GestureDetector(
         onTap: () {
-          print(categoryNames[index]);
           searchMealProvider.fetchCategoryData(categoryNames[index]);
           context.router.push(DisplaySearchRoute());
 

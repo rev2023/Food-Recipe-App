@@ -1,5 +1,4 @@
 import 'package:Food_Recipe_App/provider/search_screen_provider.dart';
-import 'package:Food_Recipe_App/services/api/search_meal.api_dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -13,22 +12,36 @@ class SearchBar extends StatefulWidget {
 }
 
 class _SearchState extends State<SearchBar> {
-  TextEditingController textController = TextEditingController();
+  bool firstTime = false;
+  FloatingSearchBarController controller = FloatingSearchBarController();
+
+
+
+  @override
+  void initState() {
+     firstTime = false;
+
+  }
 
   @override
   Widget build(BuildContext context) {
+
     return buildFloatingSearchBar(context);
   }
 
   Widget buildFloatingSearchBar(BuildContext context) {
+    if(firstTime){controller.open();}
     final isPortrait =
         MediaQuery.of(context).orientation == Orientation.portrait;
-
     return Container(
       width: 120,
       height: 90,
       margin: EdgeInsets.only(bottom: 20,),
       child: FloatingSearchBar(
+        leadingActions: [],
+        automaticallyImplyBackButton: false,
+
+        controller: controller,
         hint: 'Search...',
         scrollPadding: const EdgeInsets.only(top: 16, bottom: 50),
         transitionDuration: const Duration(milliseconds: 800),
@@ -39,17 +52,25 @@ class _SearchState extends State<SearchBar> {
         width: isPortrait ? 600 : 500,
         debounceDelay: const Duration(milliseconds: 500),
         onQueryChanged: (query) {
-          // Call your model, bloc, controller here.
+
+          // SearchMealProvider searchMealProvider = Provider.of<SearchMealProvider>(context, listen: false);
+          // searchMealProvider.query = query;
+          // searchMealProvider.fetchSearchData();
+          // context.router.push( const DisplaySearchRoute());
+
         },
         onSubmitted: (query) {
-          print(query);
           SearchMealProvider searchMealProvider = Provider.of<SearchMealProvider>(context, listen: false);
           searchMealProvider.query = query;
           searchMealProvider.fetchSearchData();
-          context.router.push( DisplaySearchRoute());
+          context.router.push( const DisplaySearchRoute());
+          firstTime = false;
+
+
         },
         transition: CircularFloatingSearchBarTransition(),
         actions: [
+
           FloatingSearchBarAction(
             showIfOpened: false,
             child: CircularButton(

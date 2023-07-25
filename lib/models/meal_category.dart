@@ -1,6 +1,3 @@
-import 'package:Food_Recipe_App/services/api/meal_category_api.dart';
-
-import '../services/api/meal_category_api.dart';
 
 class MealCategoryResponse {
   final List<MealCategory> categories;
@@ -16,7 +13,6 @@ class MealCategoryResponse {
     final categories = categoryList
         .map((categoryJson) => MealCategory.fromJson(categoryJson as Map<String, dynamic>))
         .toList();
-    //print(categories);
 
     return MealCategoryResponse(categories);
   }

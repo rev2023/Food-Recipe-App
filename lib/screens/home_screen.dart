@@ -6,8 +6,7 @@ import 'package:Food_Recipe_App/router/app_router.gr.dart';
 import 'package:Food_Recipe_App/widgets/app_bar.dart';
 import 'package:Food_Recipe_App/widgets/carousel_card.dart';
 import 'package:Food_Recipe_App/widgets/food_card.dart';
-
-import '../provider/home_screen_provider.dart';
+import 'package:Food_Recipe_App/provider/home_screen_provider.dart';
 
 @RoutePage()
 class HomeScreen extends StatelessWidget {
@@ -18,12 +17,11 @@ class HomeScreen extends StatelessWidget {
     final homeScreenProvider = Provider.of<HomeScreenProvider>(context);
     var recipeScreenProvider = Provider.of<RecipeScreenProvider>(context, listen: false);
 
-
     return Scaffold(
-      appBar: CustomAppBar(),
+      appBar:  CustomAppBar(),
       body: Visibility(
-        visible: homeScreenProvider.randomMealList.length >= 4 && homeScreenProvider.mealCategories.isNotEmpty,
-        replacement: Center(child: CircularProgressIndicator(color: Colors.yellow)),
+        visible: homeScreenProvider.randomMealList.length > 3 && homeScreenProvider.mealCategories.isNotEmpty,
+        replacement: const Center(child: CircularProgressIndicator(color: Colors.yellow)),
         child: ListView(
           children: [
             Container(

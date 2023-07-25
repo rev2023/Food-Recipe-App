@@ -2,7 +2,6 @@ import 'package:Food_Recipe_App/provider/recipe_screen_provider.dart';
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:Food_Recipe_App/widgets/food_card.dart';
-import 'package:Food_Recipe_App/models/meal.dart';
 import 'package:Food_Recipe_App/widgets/app_bar.dart';
 import 'package:provider/provider.dart';
 
@@ -43,7 +42,10 @@ class RecipeScreen extends StatelessWidget {
                 ),
                 height: 60,
                 child: Center(
-                  child: Text('Area: ${recipeProvider.meal.strArea}'),
+                  child: Padding(
+                    padding: const EdgeInsets.all(20),
+                    child: Text('Area: ${recipeProvider.meal.strArea}'),
+                  ),
                 ),
               ),
                 Container(
@@ -55,7 +57,10 @@ class RecipeScreen extends StatelessWidget {
                   ),
                   height: 60,
                   child: Center(
-                    child: Text('Category: ${recipeProvider.meal.strCategory}'),
+                    child: Padding(
+                      padding: const EdgeInsets.all(20),
+                      child: Text('Category: ${recipeProvider.meal.strCategory}'),
+                    ),
                   ),
                 ),
 

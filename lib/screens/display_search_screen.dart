@@ -2,18 +2,19 @@ import 'package:Food_Recipe_App/provider/recipe_screen_provider.dart';
 import 'package:Food_Recipe_App/widgets/app_bar.dart';
 import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:countries_flag/countries_flag.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../provider/search_screen_provider.dart';
-import '../router/app_router.gr.dart';
-import '../widgets/food_card.dart';
+import 'package:Food_Recipe_App/provider/search_screen_provider.dart';
+import 'package:Food_Recipe_App/router/app_router.gr.dart';
+import 'package:Food_Recipe_App/widgets/food_card.dart';
+
+import 'package:Food_Recipe_App/widgets/display_search_screen_app_bar.dart';
 
 @RoutePage()
 class DisplaySearchScreen extends StatelessWidget {
-  DisplaySearchScreen();
+  const DisplaySearchScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +23,7 @@ class DisplaySearchScreen extends StatelessWidget {
     var recipeScreenProvider = Provider.of<RecipeScreenProvider>(context);
 
     return Scaffold(
-      appBar: CustomAppBar(),
+      appBar: DisplayScreenAppBar(),
       body: SafeArea(
         child: Column(
           children: [
@@ -30,7 +31,7 @@ class DisplaySearchScreen extends StatelessWidget {
             Center(child: Text('Your Search Results:')),
             SizedBox(height: 30),
             Visibility(
-              replacement: Center(child: CircularProgressIndicator(color: Colors.yellow,)),
+              replacement: CircularProgressIndicator(color: Colors.yellow,),
               visible: !searchMealProvider.isLoading,
               child: Expanded(
                 child: ListView.builder(
@@ -56,36 +57,34 @@ class DisplaySearchScreen extends StatelessWidget {
                             Container(
                               height: 140,
                               width: 140,
-                              child: Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.end,
-                                  children: [
-                                    Container(
-                                      margin: EdgeInsets.only(bottom: 10),
-                                      decoration: BoxDecoration(
-                                        color: Colors.white70,
-                                        border: Border.fromBorderSide(BorderSide()),
-                                        borderRadius: BorderRadius.circular(20),
-                                      ),
-                                      height: 60,
-                                      child: Center(
-                                        child: Text('Area: ${meal.strArea}'),
-                                      ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: [
+                                  Container(
+                                    margin: EdgeInsets.only(bottom: 10),
+                                    decoration: BoxDecoration(
+                                      color: Colors.white70,
+                                      border: Border.fromBorderSide(BorderSide()),
+                                      borderRadius: BorderRadius.circular(20),
                                     ),
-                                    Container(
-                                      decoration: BoxDecoration(
-                                        color: Colors.white70,
-                                        border: Border.fromBorderSide(BorderSide()),
-                                        borderRadius: BorderRadius.circular(20),
-                                      ),
-                                      height: 60,
-                                      child: Center(
-                                        child:
-                                        Text('Category: ${meal.strCategory}'),
-                                      ),
+                                    height: 60,
+                                    child: Center(
+                                      child: Text('Area: ${meal.strArea}'),
                                     ),
-                                  ],
-                                ),
+                                  ),
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      color: Colors.white70,
+                                      border: Border.fromBorderSide(BorderSide()),
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
+                                    height: 60,
+                                    child: Center(
+                                      child:
+                                      Text('Category: ${meal.strCategory}'),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                           ],

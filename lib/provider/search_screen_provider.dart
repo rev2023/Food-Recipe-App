@@ -6,7 +6,7 @@ import '../models/meal.dart';
 
 class SearchMealProvider extends ChangeNotifier {
   String _query = '';
-  bool isLoading = true;
+  bool isLoading = false;
   List<Meal> searchMealList = [];
 
 
@@ -17,6 +17,7 @@ class SearchMealProvider extends ChangeNotifier {
   SearchMealProvider();
 
   void fetchSearchData() {
+    isLoading = true;
     SearchMealApi searchMeal = SearchMealApi(_query);
 
     searchMeal.fetchData().then((meals) {
@@ -24,8 +25,9 @@ class SearchMealProvider extends ChangeNotifier {
       print(searchMealList[0].strMeal);
       notifyListeners();
     });
+    isLoading = false;
 
-    // No need to call notifyListeners() here
+
   }
 
   void fetchCategoryData(String category) async {
