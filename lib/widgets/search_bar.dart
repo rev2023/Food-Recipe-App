@@ -12,35 +12,31 @@ class SearchBar extends StatefulWidget {
 }
 
 class _SearchState extends State<SearchBar> {
-  bool firstTime = false;
-  FloatingSearchBarController controller = FloatingSearchBarController();
-
-
+  static FloatingSearchBarController controller = FloatingSearchBarController();
 
   @override
   void initState() {
-     firstTime = false;
-
+    super.initState();
+    // Call the controller.open() inside initState to open the search bar at start
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      controller.open();
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-
     return buildFloatingSearchBar(context);
   }
 
   Widget buildFloatingSearchBar(BuildContext context) {
-    if(firstTime){controller.open();}
     final isPortrait =
         MediaQuery.of(context).orientation == Orientation.portrait;
     return Container(
       width: 120,
       height: 90,
-      margin: EdgeInsets.only(bottom: 20,),
+      margin: const EdgeInsets.only(bottom: 20,),
       child: FloatingSearchBar(
-        leadingActions: [],
         automaticallyImplyBackButton: false,
-
         controller: controller,
         hint: 'Search...',
         scrollPadding: const EdgeInsets.only(top: 16, bottom: 50),
@@ -52,25 +48,17 @@ class _SearchState extends State<SearchBar> {
         width: isPortrait ? 600 : 500,
         debounceDelay: const Duration(milliseconds: 500),
         onQueryChanged: (query) {
-
-          // SearchMealProvider searchMealProvider = Provider.of<SearchMealProvider>(context, listen: false);
-          // searchMealProvider.query = query;
-          // searchMealProvider.fetchSearchData();
-          // context.router.push( const DisplaySearchRoute());
-
+          // Handle search query changes here
         },
         onSubmitted: (query) {
           SearchMealProvider searchMealProvider = Provider.of<SearchMealProvider>(context, listen: false);
           searchMealProvider.query = query;
           searchMealProvider.fetchSearchData();
-          context.router.push( const DisplaySearchRoute());
+          context.router.push(const DisplaySearchRoute());
           firstTime = false;
-
-
         },
         transition: CircularFloatingSearchBarTransition(),
         actions: [
-
           FloatingSearchBarAction(
             showIfOpened: false,
             child: CircularButton(

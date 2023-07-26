@@ -20,7 +20,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar:  CustomAppBar(),
       body: Visibility(
-        visible: homeScreenProvider.randomMealList.length > 3 && homeScreenProvider.mealCategories.isNotEmpty,
+        visible: homeScreenProvider.randomMealList.isNotEmpty,
         replacement: const Center(child: CircularProgressIndicator(color: Colors.yellow)),
         child: ListView(
           children: [

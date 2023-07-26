@@ -8,6 +8,8 @@ class DisplayScreenAppBar extends StatelessWidget
     implements PreferredSizeWidget {
 
   final double _preferredSize = 80;
+
+  const DisplayScreenAppBar({super.key});
   @override
   Size get preferredSize =>
       Size.fromHeight(_preferredSize); // Preferred height for the AppBar
