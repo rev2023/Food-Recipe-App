@@ -8,6 +8,8 @@ import 'package:Food_Recipe_App/widgets/carousel_card.dart';
 import 'package:Food_Recipe_App/widgets/food_card.dart';
 import 'package:Food_Recipe_App/provider/home_screen_provider.dart';
 
+import '../styles/app_colors.dart';
+
 @RoutePage()
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -26,9 +28,9 @@ class HomeScreen extends StatelessWidget {
           children: [
             Container(
               height: 50,
-              decoration: const BoxDecoration(
-                color: Colors.amber,
-                borderRadius: BorderRadius.only(
+              decoration:  BoxDecoration(
+                color: AppColors.primaryColor,
+                borderRadius: const BorderRadius.only(
                   bottomLeft: Radius.circular(40),
                   bottomRight: Radius.circular(40),
                 ),
@@ -40,10 +42,10 @@ class HomeScreen extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(top: 35),
                     child: Container(
-                      child: const Text(
+                      child:  Text(
                         'Categories',
                         style: TextStyle(
-                          color: Colors.amberAccent,
+                          color: AppColors.headerColor,
                           fontSize: 25,
                           fontWeight: FontWeight.bold,
                         ),
@@ -53,7 +55,7 @@ class HomeScreen extends StatelessWidget {
                   Container(
                     margin: const EdgeInsets.only(top: 20),
                     width: 300,
-                    child: const Divider(color: Colors.amber),
+                    child:  Divider(color: AppColors.primaryColor),
                   ),
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
@@ -74,10 +76,10 @@ class HomeScreen extends StatelessWidget {
                         alignment: Alignment.center,
                         child: Center(
                           child: Container(
-                            child: const Text(
+                            child:  Text(
                               'Random Recipes',
                               style: TextStyle(
-                                color: Colors.amberAccent,
+                                color: AppColors.headerColor,
                                 fontSize: 25,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -101,7 +103,7 @@ class HomeScreen extends StatelessWidget {
                                   text: homeScreenProvider.randomMealList[0].strMeal,
                                   onTap: () {
                                     recipeScreenProvider.set(homeScreenProvider.randomMealList[0]);
-                                    context.router.push(RecipeRoute());
+                                    context.router.push(const RecipeRoute());
                                   },
                                 ),
                               const SizedBox(height: 45, width: 15),
@@ -110,7 +112,7 @@ class HomeScreen extends StatelessWidget {
                                   text: homeScreenProvider.randomMealList[1].strMeal,
                                   onTap: () {
                                     recipeScreenProvider.set(homeScreenProvider.randomMealList[1]);
-                                    context.router.push(RecipeRoute( ));
+                                    context.router.push(const RecipeRoute( ));
                                   },
                                 ),
                             ],
@@ -126,7 +128,7 @@ class HomeScreen extends StatelessWidget {
                                   onTap: () {
 
                                     recipeScreenProvider.set(homeScreenProvider.randomMealList[2]);
-                                    context.router.push(RecipeRoute());
+                                    context.router.push(const RecipeRoute());
                                   },
                                 ),
                               const SizedBox(height: 45, width: 17),
@@ -135,7 +137,7 @@ class HomeScreen extends StatelessWidget {
                                   text: homeScreenProvider.randomMealList[3].strMeal,
                                   onTap: () {
                                     recipeScreenProvider.set(homeScreenProvider.randomMealList[3]);
-                                    context.router.push(RecipeRoute());
+                                    context.router.push(const RecipeRoute());
                                   },
                                 ),
                             ],
@@ -145,12 +147,12 @@ class HomeScreen extends StatelessWidget {
                       // Add more widgets as needed
                     ],
                   ),
-                  SizedBox(height: 30),
+                  const SizedBox(height: 120),
                   Container(
                     height: 20,
-                    decoration: const BoxDecoration(
-                      color: Colors.amber,
-                      borderRadius: BorderRadius.only(
+                    decoration:  BoxDecoration(
+                      color: AppColors.primaryColor,
+                      borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(40),
                         topRight: Radius.circular(40),
                       ),

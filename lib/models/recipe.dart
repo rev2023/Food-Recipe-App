@@ -1,8 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/cupertino.dart';
-import 'package:Food_Recipe_App/widgets/food_card.dart';
 import 'package:http/http.dart' as http;
-import 'package:provider/provider.dart';
 
 class Recipe extends ChangeNotifier {
   late List<String> recipeName = [];

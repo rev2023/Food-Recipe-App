@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:Food_Recipe_App/styles/app_colors.dart';
 
 class FoodCard extends StatefulWidget {
   final String imagePath;
   final String text;
   final VoidCallback onTap;
 
-  FoodCard({required this.imagePath, required this.text, required this.onTap});
+  const FoodCard({super.key, required this.imagePath, required this.text, required this.onTap});
 
   @override
   State<FoodCard> createState() => _FoodCardState();
@@ -31,7 +32,7 @@ class _FoodCardState extends State<FoodCard> {
             width: 150,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
-              color: Colors.white,
+              color: AppColors.secondaryColor,
               image: DecorationImage(
                 image: NetworkImage(widget.imagePath),
                 fit: BoxFit.cover,
@@ -41,7 +42,7 @@ class _FoodCardState extends State<FoodCard> {
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
-              color: Color(0xFF36454F),
+              color: AppColors.labelColor,
             ),
             height: 60,
             width: 160,

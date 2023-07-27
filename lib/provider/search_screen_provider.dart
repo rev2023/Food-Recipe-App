@@ -4,17 +4,22 @@ import 'package:Food_Recipe_App/services/api/search_meal.api_dart';
 import 'package:flutter/cupertino.dart';
 import '../models/meal.dart';
 
-class SearchMealProvider extends ChangeNotifier {
+class SearchScreenProvider extends ChangeNotifier {
   String _query = '';
   bool isLoading = false;
   List<Meal> searchMealList = [];
-
+  bool _throughCategory = false;
+  bool get throughCategorySearch => _throughCategory;
+  set throughCategory(bool throughCategory){
+    _throughCategory = throughCategory;
+    notifyListeners();
+  }
 
   set query(String query) {
     _query = query;
   }
 
-  SearchMealProvider();
+  SearchScreenProvider();
 
   void fetchSearchData() {
     isLoading = true;

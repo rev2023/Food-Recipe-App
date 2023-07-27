@@ -4,6 +4,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../styles/app_colors.dart';
+
 class DisplayScreenAppBar extends StatelessWidget
     implements PreferredSizeWidget {
 
@@ -21,23 +23,23 @@ class DisplayScreenAppBar extends StatelessWidget
       child: AppBar(
         automaticallyImplyLeading: false,
         elevation: 0,
-        backgroundColor: Colors.amber,
+        backgroundColor: AppColors.primaryColor,
         toolbarHeight: 80,
-        shadowColor: Colors.amber,
+        shadowColor: AppColors.primaryColor,
         title: Row(
           children: [
             Padding(
               padding: const EdgeInsets.only(right: 16.0),
               child: GestureDetector(
-                child: Icon(Icons.arrow_back_outlined),
+                child: const Icon(Icons.arrow_back_outlined),
                 onTap: () {
                   context.router.replace(
-                    HomeRoute(),
+                    const HomeRoute(),
                   );
                 },
               ),
             ),
-            Container(
+            SizedBox(
                 width: MediaQuery.of(context).size.width - 82,
                 child: SearchBar()),
           ],

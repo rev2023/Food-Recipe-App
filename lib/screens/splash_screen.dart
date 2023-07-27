@@ -4,6 +4,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:Food_Recipe_App/router/app_router.gr.dart';
 
+import 'package:Food_Recipe_App/styles/app_colors.dart';
+
 @RoutePage()
 class SplashScreen extends StatefulWidget {
   SplashScreen({super.key});
@@ -61,7 +63,7 @@ class _SplashScreenState extends State<SplashScreen> {
             Text(
               'Your food recipe directory',
               style: TextStyle(
-                  color: Colors.black54,
+                  color: AppColors.secondaryColor,
                   fontStyle: FontStyle.italic,
                   fontSize: 20,
                   fontWeight: FontWeight.bold

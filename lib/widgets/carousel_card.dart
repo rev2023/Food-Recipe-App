@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../provider/search_screen_provider.dart';
 import '../router/app_router.gr.dart';
+import '../styles/app_colors.dart';
 
 class CarouselCard extends StatelessWidget {
   final List<String> imagePaths;
@@ -18,12 +19,13 @@ class CarouselCard extends StatelessWidget {
   List<Widget> generateCards(int length, BuildContext context) {
 
     return List<Widget>.generate(length, (index) {
-      final searchMealProvider = Provider.of<SearchMealProvider>(context,);
+      final searchMealProvider = Provider.of<SearchScreenProvider>(context,);
 
       return GestureDetector(
         onTap: () {
           searchMealProvider.fetchCategoryData(categoryNames[index]);
-          context.router.push(DisplaySearchRoute());
+          searchMealProvider.throughCategory = true;
+          context.router.push(const DisplaySearchRoute());
 
         },
 
@@ -61,7 +63,7 @@ class CarouselCard extends StatelessWidget {
                 Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(50),
-                    color: Colors.black.withOpacity(0.4), // Dark tint color
+                    color: AppColors.iconColor.withOpacity(0.4), // Dark tint color
                   ),
                   width: 250,
                   height: 200,

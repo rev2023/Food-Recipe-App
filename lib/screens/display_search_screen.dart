@@ -1,5 +1,4 @@
 import 'package:Food_Recipe_App/provider/recipe_screen_provider.dart';
-import 'package:Food_Recipe_App/widgets/app_bar.dart';
 import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
@@ -12,13 +11,15 @@ import 'package:Food_Recipe_App/widgets/food_card.dart';
 
 import 'package:Food_Recipe_App/widgets/display_search_screen_app_bar.dart';
 
+import '../styles/app_colors.dart';
+
 @RoutePage()
 class DisplaySearchScreen extends StatelessWidget {
   const DisplaySearchScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    var searchMealProvider = Provider.of<SearchMealProvider>(context);
+    var searchMealProvider = Provider.of<SearchScreenProvider>(context);
     var searchMealList = searchMealProvider.searchMealList;
     var recipeScreenProvider = Provider.of<RecipeScreenProvider>(context);
 
@@ -31,7 +32,7 @@ class DisplaySearchScreen extends StatelessWidget {
             Center(child: Text('Your Search Results:')),
             SizedBox(height: 30),
             Visibility(
-              replacement: CircularProgressIndicator(color: Colors.yellow,),
+              replacement: CircularProgressIndicator(color: AppColors.headerColor,),
               visible: !searchMealProvider.isLoading,
               child: Expanded(
                 child: ListView.builder(
@@ -50,7 +51,7 @@ class DisplaySearchScreen extends StatelessWidget {
                                 text: meal.strMeal,
                                 onTap: () {
                                   recipeScreenProvider.set(meal);
-                                  context.router.push(RecipeRoute());
+                                  context.router.push(const RecipeRoute());
                                 },
                               ),
                             ),

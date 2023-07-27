@@ -25,8 +25,8 @@ void main() {
           create: (context) => HomeScreenProvider(Provider.of<MealCategoryRepository>(context,listen: false)),
         ),
 
-        ChangeNotifierProvider<SearchMealProvider>(
-          create: (context) => SearchMealProvider(),
+        ChangeNotifierProvider<SearchScreenProvider>(
+          create: (context) => SearchScreenProvider(),
          ),
         ChangeNotifierProvider<RecipeScreenProvider>(
           create: (context) => RecipeScreenProvider(),

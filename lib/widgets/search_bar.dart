@@ -1,10 +1,10 @@
-import 'package:Food_Recipe_App/provider/search_screen_provider.dart';
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:Food_Recipe_App/router/app_router.gr.dart';
+import 'package:Food_Recipe_App/provider/search_screen_provider.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:material_floating_search_bar_2/material_floating_search_bar_2.dart';
 import 'package:provider/provider.dart';
+import 'package:Food_Recipe_App/router/app_router.gr.dart';
 
 class SearchBar extends StatefulWidget {
   @override
@@ -17,9 +17,13 @@ class _SearchState extends State<SearchBar> {
   @override
   void initState() {
     super.initState();
-    // Call the controller.open() inside initState to open the search bar at start
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      controller.open();
+      final searchMealProvider = _getSearchScreenProvider(context);
+      final throughCategorySearch = searchMealProvider.throughCategorySearch;
+      if (!throughCategorySearch) {
+        controller.open();
+      }
+      searchMealProvider.throughCategory = false;
     });
   }
 
@@ -34,7 +38,7 @@ class _SearchState extends State<SearchBar> {
     return Container(
       width: 120,
       height: 90,
-      margin: const EdgeInsets.only(bottom: 20,),
+      margin: const EdgeInsets.only(bottom: 20),
       child: FloatingSearchBar(
         automaticallyImplyBackButton: false,
         controller: controller,
@@ -47,15 +51,13 @@ class _SearchState extends State<SearchBar> {
         openAxisAlignment: 0.0,
         width: isPortrait ? 600 : 500,
         debounceDelay: const Duration(milliseconds: 500),
-        onQueryChanged: (query) {
-          // Handle search query changes here
-        },
         onSubmitted: (query) {
-          SearchMealProvider searchMealProvider = Provider.of<SearchMealProvider>(context, listen: false);
+          final searchMealProvider = _getSearchScreenProvider(context);
           searchMealProvider.query = query;
           searchMealProvider.fetchSearchData();
-          context.router.push(const DisplaySearchRoute());
-          firstTime = false;
+          if (!searchMealProvider.throughCategorySearch) {
+            context.router.push(const DisplaySearchRoute());
+          }
         },
         transition: CircularFloatingSearchBarTransition(),
         actions: [
@@ -87,5 +89,9 @@ class _SearchState extends State<SearchBar> {
         },
       ),
     );
+  }
+
+  SearchScreenProvider _getSearchScreenProvider(BuildContext context) {
+    return Provider.of<SearchScreenProvider>(context, listen: false);
   }
 }
