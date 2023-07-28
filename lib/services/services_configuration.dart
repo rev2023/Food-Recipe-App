@@ -12,7 +12,6 @@ final getIt = GetIt.instance;
 void setupDependencies() {
 
   // Registering APIs with interfaces or abstract classes
-  getIt.registerSingleton<MealCategoryApi>(MealCategoryApi());
   getIt.registerSingleton<RandomMealApi>(RandomMealApi());
 
 }

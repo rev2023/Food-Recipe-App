@@ -23,7 +23,7 @@ abstract class $AppRouter extends _i5.RootStackRouter {
     DisplaySearchRoute.name: (routeData) {
       return _i5.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i1.DisplaySearchScreen(),
+        child: const _i1.DisplaySearchScreen(),
       );
     },
     HomeRoute.name: (routeData) {

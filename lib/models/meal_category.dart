@@ -1,23 +1,19 @@
+import 'package:json_annotation/json_annotation.dart';
 
+part 'meal_category.g.dart';
+
+@JsonSerializable()
 class MealCategoryResponse {
   final List<MealCategory> categories;
 
   MealCategoryResponse(this.categories);
 
-  factory MealCategoryResponse.fromJson(Map<String, dynamic>? json) {
-    if (json == null) {
-      throw const FormatException('Null JSON provided to MealCategoryResponse');
-    }
+  factory MealCategoryResponse.fromJson(Map<String, dynamic> json) => _$MealCategoryResponseFromJson(json);
 
-    final categoryList = json['categories'] as List<dynamic>;
-    final categories = categoryList
-        .map((categoryJson) => MealCategory.fromJson(categoryJson as Map<String, dynamic>))
-        .toList();
-
-    return MealCategoryResponse(categories);
-  }
+  Map<String, dynamic> toJson() => _$MealCategoryResponseToJson(this);
 }
 
+@JsonSerializable()
 class MealCategory {
   final String idCategory;
   final String strCategory;
@@ -26,18 +22,7 @@ class MealCategory {
 
   MealCategory(this.idCategory, this.strCategory, this.strCategoryThumb, this.strCategoryDescription);
 
-  factory MealCategory.fromJson(Map<String, dynamic>? json) {
-    if (json == null) {
-      throw const FormatException('Null JSON provided to MealCategoryResponse');
-    }
-    print(json['idCategory'] as String);
+  factory MealCategory.fromJson(Map<String, dynamic> json) => _$MealCategoryFromJson(json);
 
-
-    return MealCategory(
-      json['idCategory'] as String,
-      json['strCategory'] as String,
-      json['strCategoryThumb'] as String,
-      json['strCategoryDescription'] as String,
-    );
-  }
+  Map<String, dynamic> toJson() => _$MealCategoryToJson(this);
 }
