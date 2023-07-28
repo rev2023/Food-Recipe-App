@@ -1,8 +1,8 @@
 import 'package:Food_Recipe_App/services/api/meal_by_category_api.dart';
 import 'package:Food_Recipe_App/services/api/meal_by_id.dart';
-import 'package:Food_Recipe_App/services/api/search_meal.api_dart';
+import 'package:Food_Recipe_App/services/api/search_meal.api.dart';
 import 'package:flutter/cupertino.dart';
-import '../models/meal.dart';
+import 'package:Food_Recipe_App/models/meal.dart';
 
 class SearchScreenProvider extends ChangeNotifier {
   String _query = '';

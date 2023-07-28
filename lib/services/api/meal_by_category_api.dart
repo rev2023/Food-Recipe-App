@@ -1,11 +1,5 @@
-import 'dart:convert';
 import 'package:dio/dio.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:Food_Recipe_App/models/meal_category.dart';
-import 'package:Food_Recipe_App/widgets/food_card.dart';
-import 'package:provider/provider.dart';
-
-import '../../models/meal.dart';
+import 'package:Food_Recipe_App/models/meal.dart';
 
 class MealByCategoryApi {
 

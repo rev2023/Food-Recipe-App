@@ -1,10 +1,7 @@
-import 'package:Food_Recipe_App/provider/async_change_notifier.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:Food_Recipe_App/services/api/random_meals_api.dart';
 import 'package:Food_Recipe_App/models/meal.dart';
 import 'package:Food_Recipe_App/services/services_configuration.dart';
-
-
 import 'package:Food_Recipe_App/models/meal_category.dart';
 import 'package:Food_Recipe_App/repository/meal_category_repository.dart';
 

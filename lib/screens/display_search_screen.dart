@@ -1,17 +1,12 @@
 import 'package:Food_Recipe_App/provider/recipe_screen_provider.dart';
-import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import 'package:Food_Recipe_App/provider/search_screen_provider.dart';
 import 'package:Food_Recipe_App/router/app_router.gr.dart';
 import 'package:Food_Recipe_App/widgets/food_card.dart';
-
 import 'package:Food_Recipe_App/widgets/display_search_screen_app_bar.dart';
-
-import '../styles/app_colors.dart';
+import 'package:Food_Recipe_App/styles/app_colors.dart';
 
 @RoutePage()
 class DisplaySearchScreen extends StatelessWidget {

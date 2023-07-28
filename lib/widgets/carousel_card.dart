@@ -1,11 +1,10 @@
 import 'package:Food_Recipe_App/provider/home_screen_provider.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../provider/search_screen_provider.dart';
-import '../router/app_router.gr.dart';
-import '../styles/app_colors.dart';
+import 'package:Food_Recipe_App/provider/search_screen_provider.dart';
+import 'package:Food_Recipe_App/router/app_router.gr.dart';
+import 'package:Food_Recipe_App/styles/app_colors.dart';
 
 class CarouselCard extends StatelessWidget {
   final List<String> imagePaths;
@@ -13,7 +12,7 @@ class CarouselCard extends StatelessWidget {
 
 
 
-  CarouselCard(this.imagePaths,  this.categoryNames, {super.key});
+  const CarouselCard(this.imagePaths,  this.categoryNames, {super.key});
 
 
   List<Widget> generateCards(int length, BuildContext context) {
