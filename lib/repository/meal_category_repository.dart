@@ -1,5 +1,5 @@
-import '../models/meal_category.dart';
-import '../services/api/meal_category_api.dart';
+import 'package:Food_Recipe_App/models/meal_category.dart';
+import 'package:Food_Recipe_App/services/api/meal_category_api.dart';
 
 
 class MealCategoryRepository {

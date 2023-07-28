@@ -77,7 +77,7 @@ class HomeScreen extends StatelessWidget {
                         child: Center(
                           child: Container(
                             child:  Text(
-                              'Random Recipes',
+                              'Take your pick',
                               style: TextStyle(
                                 color: AppColors.headerColor,
                                 fontSize: 25,
