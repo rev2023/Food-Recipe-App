@@ -19,7 +19,7 @@ class DisplaySearchScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var searchMealProvider = Provider.of<SearchScreenProvider>(context);
+    var searchMealProvider = Provider.of<SearchScreenProvider  >(context);
     var searchMealList = searchMealProvider.searchMealList;
     var recipeScreenProvider = Provider.of<RecipeScreenProvider>(context);
 
@@ -29,7 +29,7 @@ class DisplaySearchScreen extends StatelessWidget {
         child: Column(
           children: [
             SizedBox(height: 30),
-            Center(child: Text('Your Search Results:')),
+            const Center(child: Text('Your Search Results:')),
             SizedBox(height: 30),
             Visibility(
               replacement: CircularProgressIndicator(color: AppColors.headerColor,),

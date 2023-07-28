@@ -1,11 +1,11 @@
-import '../models/meal_category.dart';
-import '../services/api/meal_category_api.dart';
+import 'package:Food_Recipe_App/models/meal_category.dart';
+import 'package:Food_Recipe_App/services/api/meal_category_api.dart';
+import 'package:Food_Recipe_App/services/services_configuration.dart';
 
 class MealCategoryRepository {
-  final MealCategoryApi mealCategoryApi;
   List<MealCategory> _mealCategoryList = [];
 
-  MealCategoryRepository(this.mealCategoryApi);
+  MealCategoryRepository();
 
   List<MealCategory> get mealCategory => _mealCategoryList;
 
@@ -14,7 +14,7 @@ class MealCategoryRepository {
       return _mealCategoryList;
     }
     else{
-    return  mealCategoryApi.fetchData().then((mealCategoryResponse) {
+    return  getIt<MealCategoryApi>().fetchData().then((mealCategoryResponse) {
       final categories = mealCategoryResponse.categories;
        _mealCategoryList = categories;
        return _mealCategoryList;

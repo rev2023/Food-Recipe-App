@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import '../../models/meal.dart';
+import 'package:Food_Recipe_App/models/meal.dart';
 
 
 
