@@ -1,7 +1,7 @@
-import 'package:Food_Recipe_App/provider/home_screen_provider.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:Food_Recipe_App/provider/home_screen_provider.dart';
 import 'package:Food_Recipe_App/provider/search_screen_provider.dart';
 import 'package:Food_Recipe_App/router/app_router.gr.dart';
 import 'package:Food_Recipe_App/styles/app_colors.dart';
@@ -10,24 +10,19 @@ class CarouselCard extends StatelessWidget {
   final List<String> imagePaths;
   final List<String> categoryNames;
 
-
-
-  const CarouselCard(this.imagePaths,  this.categoryNames, {super.key});
-
+  const CarouselCard(this.imagePaths, this.categoryNames, {Key? key})
+      : super(key: key);
 
   List<Widget> generateCards(int length, BuildContext context) {
-
     return List<Widget>.generate(length, (index) {
-      final searchMealProvider = Provider.of<SearchScreenProvider>(context,);
+      final searchMealProvider = Provider.of<SearchScreenProvider>(context);
 
       return GestureDetector(
         onTap: () {
           searchMealProvider.fetchCategoryData(categoryNames[index]);
           searchMealProvider.throughCategory = true;
           context.router.push(const DisplaySearchRoute());
-
         },
-
         child: Container(
           margin: const EdgeInsets.fromLTRB(25, 50, 15, 100),
           decoration: BoxDecoration(
@@ -42,7 +37,7 @@ class CarouselCard extends StatelessWidget {
             ],
           ),
           child: Card(
-            elevation: 10, // Remove default card shadow
+            elevation: 10,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(50),
             ),
@@ -62,14 +57,18 @@ class CarouselCard extends StatelessWidget {
                 Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(50),
-                    color: AppColors.iconColor.withOpacity(0.4), // Dark tint color
+                    color: AppColors.iconColor.withOpacity(0.4),
                   ),
                   width: 250,
                   height: 200,
                   child: Center(
                     child: Text(
                       categoryNames[index],
-                      style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20),
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                      ),
                     ),
                   ),
                 ),

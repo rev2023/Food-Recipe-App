@@ -6,7 +6,6 @@ class MealList {
   factory MealList.fromJson(Map<String, dynamic> jsonData) {
     final meals = jsonData['meals'] as List<dynamic>;
     final mealsList = meals.map((meal) => Meal.fromJson(meal as Map<String, dynamic>)).toList();
-
     return MealList(mealsList);
   }
 }
@@ -34,7 +33,7 @@ class Meal {
       json['strMeal'] as String,
       json['strCategory'] as String? ?? 'null',
       json['strArea'] as String? ?? 'null',
-      json['strInstructions'] as String? ?? 'null', // Set 'null' if strInstructions is null
+      json['strInstructions'] as String? ?? 'null',
       json['strMealThumb'] as String,
     );
   }

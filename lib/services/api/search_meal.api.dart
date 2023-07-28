@@ -1,14 +1,12 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
 import 'package:Food_Recipe_App/models/meal.dart';
 
 
 
 class SearchMealApi {
+
   String _searchTerm;
-
   String get searchTerm => _searchTerm;
-
 
   SearchMealApi(this._searchTerm);
 
@@ -17,7 +15,6 @@ class SearchMealApi {
       var apiEndpoint = 'https://www.themealdb.com/api/json/v1/1/search.php?s=$_searchTerm';
       final Response<dynamic> response = await Dio().get(apiEndpoint);
       if (response.statusCode == 200) {
-        print(apiEndpoint);
         return MealList.fromJson(response.data);
       } else {
         throw Exception('Failed to fetch meal data. StatusCode: ${response.statusCode}');
