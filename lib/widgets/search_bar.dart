@@ -13,14 +13,15 @@ class SearchBar extends StatefulWidget {
 
 class _SearchState extends State<SearchBar> {
   static FloatingSearchBarController controller = FloatingSearchBarController();
-
+  bool searched = false;
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
+      print(searched);
       final searchMealProvider = _getSearchScreenProvider(context);
       final throughCategorySearch = searchMealProvider.throughCategorySearch;
-      if (!throughCategorySearch) {
+      if (!throughCategorySearch && !searched) {
         controller.open();
       }
       searchMealProvider.throughCategory = false;
@@ -58,6 +59,8 @@ class _SearchState extends State<SearchBar> {
           if (!searchMealProvider.throughCategorySearch) {
             context.router.push(const DisplaySearchRoute());
           }
+          searched = true;
+
         },
         transition: CircularFloatingSearchBarTransition(),
         actions: [

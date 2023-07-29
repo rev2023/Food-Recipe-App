@@ -20,7 +20,7 @@ class HomeScreen extends StatelessWidget {
     var recipeScreenProvider = Provider.of<RecipeScreenProvider>(context, listen: false);
 
     return Scaffold(
-      appBar:  CustomAppBar(),
+      appBar: CustomAppBar(),
       body: Visibility(
         visible: homeScreenProvider.randomMealList.isNotEmpty,
         replacement: const Center(child: CircularProgressIndicator(color: Colors.yellow)),
@@ -28,7 +28,7 @@ class HomeScreen extends StatelessWidget {
           children: [
             Container(
               height: 50,
-              decoration:  BoxDecoration(
+              decoration: BoxDecoration(
                 color: AppColors.primaryColor,
                 borderRadius: const BorderRadius.only(
                   bottomLeft: Radius.circular(40),
@@ -42,7 +42,7 @@ class HomeScreen extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(top: 35),
                     child: Container(
-                      child:  Text(
+                      child: Text(
                         'Categories',
                         style: TextStyle(
                           color: AppColors.headerColor,
@@ -55,7 +55,7 @@ class HomeScreen extends StatelessWidget {
                   Container(
                     margin: const EdgeInsets.only(top: 20),
                     width: 300,
-                    child:  Divider(color: AppColors.primaryColor),
+                    child: Divider(color: AppColors.primaryColor),
                   ),
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
@@ -70,87 +70,81 @@ class HomeScreen extends StatelessWidget {
             Center(
               child: Column(
                 children: [
-                  Column(
-                    children: [
-                      Align(
-                        alignment: Alignment.center,
-                        child: Center(
-                          child: Container(
-                            child:  Text(
-                              'Take your pick',
-                              style: TextStyle(
-                                color: AppColors.headerColor,
-                                fontSize: 25,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
+                  Align(
+                    alignment: Alignment.center,
+                    child: Container(
+                      child: Text(
+                        'Take your pick',
+                        style: TextStyle(
+                          color: AppColors.headerColor,
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
-                      const SizedBox(
-                        height: 45,
-                      ),
-
-                        Column(
-                        children: [
-                           if (homeScreenProvider.randomMealList.length > 3)
-
-                            Row(
-                            children: [
-                              const SizedBox(height: 45, width: 20),
-                                FoodCard(
-                                  imagePath: homeScreenProvider.randomMealList[0].strMealThumb,
-                                  text: homeScreenProvider.randomMealList[0].strMeal,
-                                  onTap: () {
-                                    recipeScreenProvider.set(homeScreenProvider.randomMealList[0]);
-                                    context.router.push(const RecipeRoute());
-                                  },
-                                ),
-                              const SizedBox(height: 45, width: 15),
-                                FoodCard(
-                                  imagePath: homeScreenProvider.randomMealList[1].strMealThumb,
-                                  text: homeScreenProvider.randomMealList[1].strMeal,
-                                  onTap: () {
-                                    recipeScreenProvider.set(homeScreenProvider.randomMealList[1]);
-                                    context.router.push(const RecipeRoute( ));
-                                  },
-                                ),
-                            ],
-                          ),
-                          if (homeScreenProvider.randomMealList.length > 3)
-
-                            Row(
-                            children: [
-                              const SizedBox(height: 65, width: 17),
-                                FoodCard(
-                                  imagePath: homeScreenProvider.randomMealList[2].strMealThumb,
-                                  text: homeScreenProvider.randomMealList[2].strMeal,
-                                  onTap: () {
-
-                                    recipeScreenProvider.set(homeScreenProvider.randomMealList[2]);
-                                    context.router.push(const RecipeRoute());
-                                  },
-                                ),
-                              const SizedBox(height: 45, width: 17),
-                                FoodCard(
-                                  imagePath: homeScreenProvider.randomMealList[3].strMealThumb,
-                                  text: homeScreenProvider.randomMealList[3].strMeal,
-                                  onTap: () {
-                                    recipeScreenProvider.set(homeScreenProvider.randomMealList[3]);
-                                    context.router.push(const RecipeRoute());
-                                  },
-                                ),
-                            ],
-                          )
-                        ],
-                      ),
-                      // Add more widgets as needed
-                    ],
+                    ),
                   ),
+                  const SizedBox(
+                    height: 45,
+                  ),
+                  if (homeScreenProvider.randomMealList.length > 3)
+                    Row(
+                      children: [
+                        const SizedBox(height: 45, width: 20),
+                        Expanded(
+                          child: FoodCard(
+                            imagePath: homeScreenProvider.randomMealList[0].strMealThumb,
+                            text: homeScreenProvider.randomMealList[0].strMeal,
+                            onTap: () {
+                              recipeScreenProvider.set(homeScreenProvider.randomMealList[0]);
+                              context.router.push(const RecipeRoute());
+                            },
+                          ),
+                        ),
+                        const SizedBox(height: 45, width: 15),
+                        Expanded(
+                          child: FoodCard(
+                            imagePath: homeScreenProvider.randomMealList[1].strMealThumb,
+                            text: homeScreenProvider.randomMealList[1].strMeal,
+                            onTap: () {
+                              recipeScreenProvider.set(homeScreenProvider.randomMealList[1]);
+                              context.router.push(const RecipeRoute());
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  if (homeScreenProvider.randomMealList.length > 3)
+                    Row(
+                      children: [
+                        const SizedBox(height: 65, width: 17),
+                        Expanded(
+                          child: FoodCard(
+                            imagePath: homeScreenProvider.randomMealList[2].strMealThumb,
+                            text: homeScreenProvider.randomMealList[2].strMeal,
+                            onTap: () {
+                              recipeScreenProvider.set(homeScreenProvider.randomMealList[2]);
+                              context.router.push(const RecipeRoute());
+                            },
+                          ),
+                        ),
+                        const SizedBox(height: 45, width: 17),
+                        Expanded(
+                          child: FoodCard(
+                            imagePath: homeScreenProvider.randomMealList[3].strMealThumb,
+                            text: homeScreenProvider.randomMealList[3].strMeal,
+                            onTap: () {
+                              recipeScreenProvider.set(homeScreenProvider.randomMealList[3]);
+                              context.router.push(const RecipeRoute());
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  // Add more widgets as needed
                   const SizedBox(height: 120),
                   Container(
                     height: 20,
-                    decoration:  BoxDecoration(
+                    decoration: BoxDecoration(
                       color: AppColors.primaryColor,
                       borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(40),
